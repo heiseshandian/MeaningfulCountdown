@@ -1,7 +1,9 @@
 {
   "expo": {
-    "name": "MeaningfulCountdown",
-    "slug": "MeaningfulCountdown",
+    "name": "meaningful-countdown-v2",
+    "slug": "meaningful-countdown-v2",
+    "owner": "baymax.zhang",
+    "privacy": "public",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,7 +14,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/0acad8fb-647b-41e8-84e0-3ab703b2042d"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -28,6 +31,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0acad8fb-647b-41e8-84e0-3ab703b2042d"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }
