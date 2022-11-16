@@ -2,8 +2,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { storageEventEmitter } from "./events";
 import { IMAGES_CHANGED_EVENT } from "./constants";
 
-AsyncStorage.clear();
-
 export const storeImages = async (images) => {
   try {
     const jsonValue = JSON.stringify(images);
