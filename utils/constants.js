@@ -3,3 +3,5 @@ export const IMAGE_SCREEN_NAME = "IMAGE_SCREEN_NAME";
 
 export const DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
 export const END_DAY = "2023/8/1";
+
+export const IMAGES_CHANGED_EVENT = "IMAGES_CHANGED_EVENT";

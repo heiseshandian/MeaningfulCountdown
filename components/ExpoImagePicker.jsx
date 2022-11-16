@@ -3,7 +3,8 @@ import { Image, TouchableHighlight } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
 import { storeImages, getImages } from "../utils/storage";
-import { IMAGE_SCREEN_NAME } from "../utils/constants";
+import { IMAGES_CHANGED_EVENT, IMAGE_SCREEN_NAME } from "../utils/constants";
+import { storageEventEmitter } from "../utils/events";
 
 export function ExpoImagePicker({ navigation }) {
   const [image, setImage] = useState(null);
@@ -13,6 +14,20 @@ export function ExpoImagePicker({ navigation }) {
     getImages().then((images) => {
       if (images) {
         setImage(images[0]);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    storageEventEmitter.on(IMAGES_CHANGED_EVENT, (newImages = []) => {
+      if (newImages.length === 0) {
+        setImage(null);
+        return;
+      }
+
+      const hasBeenDeleted = !newImages.includes(image);
+      if (hasBeenDeleted) {
+        setImage(newImages[0]);
       }
     });
   }, []);

@@ -1,9 +1,15 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { storageEventEmitter } from "./events";
+import { IMAGES_CHANGED_EVENT } from "./constants";
+
+AsyncStorage.clear();
 
 export const storeImages = async (images) => {
   try {
     const jsonValue = JSON.stringify(images);
     await AsyncStorage.setItem("@unique_images_key", jsonValue);
+
+    storageEventEmitter.emit(IMAGES_CHANGED_EVENT, images);
   } catch (e) {
     console.log("e", e);
   }

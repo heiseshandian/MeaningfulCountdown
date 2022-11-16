@@ -8,7 +8,6 @@ export function ImageScreen({ navigation }) {
 
   useEffect(() => {
     getImages().then((urls) => {
-      console.log("urls", urls);
       if (urls) {
         setImages(urls.map((url) => ({ url })));
       }
@@ -31,13 +30,13 @@ export function ImageScreen({ navigation }) {
     const copy = images.slice();
     copy.splice(currentShowIndex, 1);
 
+    setImages(copy);
+    storeImages(copy.map(({ url }) => url));
+
     if (copy.length === 0) {
       navigation.goBack();
       return;
     }
-
-    setImages(copy);
-    storeImages(copy);
   };
 
   return (
